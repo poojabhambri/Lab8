@@ -23,6 +23,12 @@ public class CustomListTest {
         list = new CustomList(null,new ArrayList<>());
         return list;
     }
+    /**
+     * get the size of the list
+     * increase the list by adding a new city
+     * check if our current size matches the initial size
+     plus one
+     */
     @Test
     public void addCityTest(){
         list = MockCityList();
@@ -38,5 +44,14 @@ public class CustomListTest {
         Assertions.assertFalse(list.hasCity(city));
         list.addCity(city);
         Assertions.assertTrue(list.hasCity(city));
+    }
+    @Test
+    public void testDelete(){
+        list = MockCityList();
+        City city = new City("Calgary", "Alberta");
+        list.addCity(city);
+        Assertions.assertTrue(list.hasCity(city));
+        list.delete(city);
+        Assertions.assertFalse(list.hasCity(city));
     }
 }
